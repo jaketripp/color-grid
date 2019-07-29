@@ -1,0 +1,23 @@
+#grid {
+  display: grid;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.row {
+  display: grid;
+}
+
+.block {
+  color: transparent;
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    color: white;
+  }
+}
