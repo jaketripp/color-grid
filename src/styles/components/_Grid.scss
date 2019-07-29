@@ -12,12 +12,22 @@
 
 .block {
   color: transparent;
-  transition: .3s;
+  transition: 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // hide content when not hovered - screwing up sizing
+  .rgb,
+  .hex {
+    display: none;
+  }
   &:hover {
     color: white;
+    transform: scale(1.25);
+    .rgb,
+    .hex {
+      display: block;
+    }
   }
 }
