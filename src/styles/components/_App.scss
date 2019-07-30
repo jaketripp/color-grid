@@ -1,9 +1,23 @@
+.form {
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
 .form-colors {
   display: grid;
   grid-template-columns: repeat(2, 50px);
-  grid-gap: 8px;
-  padding: 8px;
+  grid-gap: 4px;
+  padding: 4px;
 }
+
+input[type="color"] {
+  height: 100%;
+  min-height: 27px;
+}
+
+
 // .App {
 //   min-height: calc(100vh - 80px);
 //   max-width: 1300px;

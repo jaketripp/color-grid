@@ -1,7 +1,10 @@
 // packages
 import React, { Component } from "react";
+import { ChromePicker } from "react-color";
+import InputRange from "react-input-range";
 
 // components
+import Footer from "./Footer";
 import Grid from "./Grid";
 
 import Util from "../js/color-utils";
@@ -51,20 +54,23 @@ class App extends Component {
       verticalSteps
     );
 
-    const verticalStepsArr = Array.from({ length: verticalSteps }, (x, i) => i);
-
     // iterate vertically and make new array of rows
     const colorTable = leftColorArr.map((leftCell, i) => {
       const rightCell = rightColorArr[i];
       return Util.createColorArr(leftCell, rightCell, horizontalSteps);
     });
 
-    // updateUI(colorTable, SELECTOR, blockWidth, blockHeight);
-
+    // <ChromePicker
+    //   color={this.state.topLeft}
+    //   onChangeComplete={color => {
+    //     this.setState({ topLeft: color.hex });
+    //   }}
+    // />
     return (
       <div className="App">
         <div className="form">
           <div className="form-colors">
+            
             <div className="form-input">
               <input
                 type="color"
@@ -106,28 +112,31 @@ class App extends Component {
             </div>
           </div>
           <div className="form-steps">
-            <label htmlFor="verticalSteps">Vertical Steps: {this.state.verticalSteps}</label>
-            <input
-              type="range"
-              name="verticalSteps"
-              min="2"
-              max="20"
-              step="1"
-              value={this.state.verticalSteps}
-              onChange={this.handleColorChange}
-            />
-            <label htmlFor="horizontalSteps">Horizontal Steps: {this.state.horizontalSteps}</label>
-            <input
-              type="range"
-              name="horizontalSteps"
-              min="2"
-              max="20"
-              step="1"
-              value={this.state.horizontalSteps}
-              onChange={this.handleColorChange}
-            />
+            <div className="input-container">
+              <label>Rows:</label>
+              <InputRange
+                minValue={2}
+                maxValue={20}
+                value={this.state.verticalSteps}
+                onChange={value => this.setState({ verticalSteps: value })}
+              />
+            </div>
+
+            <div className="input-container">
+              <label>Columns:</label>
+              <InputRange
+                minValue={2}
+                maxValue={20}
+                value={this.state.horizontalSteps}
+                onChange={value =>
+                  this.setState({ horizontalSteps: value })
+                }
+              />
+            </div>
           </div>
+          <Footer />
         </div>
+
         <Grid
           table={colorTable}
           verticalSteps={this.state.verticalSteps}
