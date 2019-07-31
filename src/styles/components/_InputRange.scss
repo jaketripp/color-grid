@@ -95,7 +95,8 @@
 
 ///// begin mine
 
-.input-range__label--min, .input-range__label--max {
+.input-range__label--min,
+.input-range__label--max {
   display: none;
 }
 
@@ -104,17 +105,45 @@
   justify-content: center;
 }
 
-.input-container, .input-range {
+.input-container,
+.input-range {
   flex: 0 1 40%;
-  min-width: 120px;
+  min-width: 80px;
   max-width: 248px;
 }
 
 .input-container {
-  margin: 16px 0px;
-  margin-left: 20px;
+  margin: 16px 6px;
+  padding: 0 8px;
 }
 
 .input-range {
-  margin: 24px 16px 16px 0;
+  margin: 24px 16px 0px 0px;
+}
+
+.color-picker-button {
+  padding: 5px;
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  cursor: pointer;
+  div {
+    width: 40px;
+    height: 20px;
+    border-radius: 2px;
+  }
+}
+
+.popover {
+  position: absolute;
+  z-index: 2;
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }

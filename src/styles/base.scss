@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Proxima Nova";
+  src: local("Proxima Nova"), url(./ProximaNova-Thin.otf) format("opentype");
+}
+
+h1 {
+  font-family: "Proxima Nova";
+  color: #545454;
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
 body {
   background: #f2f2f2;
 }

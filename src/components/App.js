@@ -13,22 +13,50 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topLeft: "#78e08f",
-      topRight: "#f1c40f",
+      topLeft: "#78E08F",
+      topRight: "#F1C40F",
       bottomLeft: "#079992",
-      bottomRight: "#e9a69f",
+      bottomRight: "#E9A69F",
       verticalSteps: 6,
-      horizontalSteps: 10
+      horizontalSteps: 10,
+      whichCorner: "",
+      displayColorPicker: false,
+      colorPickerColor: ""
     };
   }
 
-  handleColorChange = e => {
+  // set which color you're currently editing
+  handleClick = whichCorner => () => {
     const newState = {};
-    newState[e.target.name] = e.target.value;
+
+    // toggle display
+    newState.displayColorPicker = !this.state.displayColorPicker;
+
+    // update whichCorner you clicked
+    newState.whichCorner = whichCorner;
+
+    // update colorPickerColor to initialize with whichCorner you clicked
+    newState.colorPickerColor = this.state[whichCorner];
+
     this.setState(newState);
   };
 
-  render() {
+  // hide color picker and reset whichCorner
+  handleClose = () => {
+    this.setState({ displayColorPicker: false, whichCorner: "" });
+  };
+
+  // update correct color
+  handleChange = color => {
+    if (this.state.whichCorner) {
+      const newState = {};
+      newState[this.state.whichCorner] = color.hex;
+      newState.colorPickerColor = color.hex;
+      this.setState(newState);
+    }
+  };
+
+  createColorTable = () => {
     const {
       topLeft,
       topRight,
@@ -55,93 +83,89 @@ class App extends Component {
     );
 
     // iterate vertically and make new array of rows
-    const colorTable = leftColorArr.map((leftCell, i) => {
+    return leftColorArr.map((leftCell, i) => {
       const rightCell = rightColorArr[i];
       return Util.createColorArr(leftCell, rightCell, horizontalSteps);
     });
+  }
 
-    // <ChromePicker
-    //   color={this.state.topLeft}
-    //   onChangeComplete={color => {
-    //     this.setState({ topLeft: color.hex });
-    //   }}
-    // />
+  render() {
+    const colorTable = this.createColorTable();
+
     return (
       <div className="App">
-        <div className="form">
-          <div className="form-colors">
-            
-            <div className="form-input">
-              <input
-                type="color"
-                name="topLeft"
-                title="Top left color"
-                value={this.state.topLeft}
-                onChange={this.handleColorChange}
-              />
+        <div className="header">
+          <div className="form">
+            <div className="form-colors">
+              <div className="color-buttons">
+                <div
+                  className="color-picker-button"
+                  onClick={this.handleClick("topLeft")}
+                >
+                  <div style={{ background: this.state.topLeft }} />
+                </div>
+                <div
+                  className="color-picker-button"
+                  onClick={this.handleClick("topRight")}
+                >
+                  <div style={{ background: this.state.topRight }} />
+                </div>
+                <div
+                  className="color-picker-button"
+                  onClick={this.handleClick("bottomLeft")}
+                >
+                  <div style={{ background: this.state.bottomLeft }} />
+                </div>
+                <div
+                  className="color-picker-button"
+                  onClick={this.handleClick("bottomRight")}
+                >
+                  <div style={{ background: this.state.bottomRight }} />
+                </div>
+              </div>
+
+              {this.state.displayColorPicker && (
+                <div className="popover">
+                  <div className="cover" onClick={this.handleClose} />
+                  <ChromePicker
+                    color={this.state.colorPickerColor}
+                    onChangeComplete={this.handleChange}
+                  />
+                </div>
+              )}
             </div>
 
-            <div className="form-input">
-              <input
-                type="color"
-                name="topRight"
-                title="Top right color"
-                value={this.state.topRight}
-                onChange={this.handleColorChange}
-              />
-            </div>
+            <div className="form-steps">
+              <div className="input-container">
+                <label>Rows:</label>
+                <InputRange
+                  minValue={2}
+                  maxValue={10}
+                  value={this.state.verticalSteps}
+                  onChange={value => this.setState({ verticalSteps: value })}
+                />
+              </div>
 
-            <div className="form-input">
-              <input
-                type="color"
-                name="bottomLeft"
-                title="Bottom left color"
-                value={this.state.bottomLeft}
-                onChange={this.handleColorChange}
-              />
-            </div>
-
-            <div className="form-input">
-              <input
-                type="color"
-                name="bottomRight"
-                title="Bottom right color"
-                value={this.state.bottomRight}
-                onChange={this.handleColorChange}
-              />
+              <div className="input-container">
+                <label>Columns:</label>
+                <InputRange
+                  minValue={2}
+                  maxValue={10}
+                  value={this.state.horizontalSteps}
+                  onChange={value => this.setState({ horizontalSteps: value })}
+                />
+              </div>
             </div>
           </div>
-          <div className="form-steps">
-            <div className="input-container">
-              <label>Rows:</label>
-              <InputRange
-                minValue={2}
-                maxValue={20}
-                value={this.state.verticalSteps}
-                onChange={value => this.setState({ verticalSteps: value })}
-              />
-            </div>
 
-            <div className="input-container">
-              <label>Columns:</label>
-              <InputRange
-                minValue={2}
-                maxValue={20}
-                value={this.state.horizontalSteps}
-                onChange={value =>
-                  this.setState({ horizontalSteps: value })
-                }
-              />
-            </div>
-          </div>
-          <Footer />
+          <h1>Color Grid</h1>
         </div>
-
         <Grid
           table={colorTable}
           verticalSteps={this.state.verticalSteps}
           horizontalSteps={this.state.horizontalSteps}
         />
+        <Footer />
       </div>
     );
   }
