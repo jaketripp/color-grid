@@ -4,6 +4,7 @@
   max-width: 100%;
   height: calc(100vh - 140px);
   overflow-x: hidden;
+  overflow: visible;
 }
 
 .row {
@@ -17,16 +18,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // hide content when not hovered - screwing up sizing
-  .rgb,
-  .hex {
+  position: relative;
+  .rgb, .hex {
+    padding: 8px;
+  }
+  .hover {
     display: none;
+    pointer-events: none;
   }
   &:hover {
     color: white;
-    .rgb,
-    .hex {
-      display: block;
+    .hover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      z-index: 1000;
+      width: 100%;
+      min-width: 150px;
+      height: 100%;
+      min-height: 96px;
     }
   }
+}
+
+.block:first-child:hover .hover {
+  left: 0;
+}
+
+.block:last-child:hover .hover {
+  right: 0;
 }

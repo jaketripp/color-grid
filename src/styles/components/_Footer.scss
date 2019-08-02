@@ -1,9 +1,8 @@
 .footer {
-  min-width: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
   p, p a {
-    color: #777777 !important;
+    color: $lightgray !important;
   }
 }

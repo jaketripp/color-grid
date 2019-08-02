@@ -5,15 +5,11 @@
 
 h1 {
   font-family: "Proxima Nova";
-  color: #545454;
+  color: $gray;
   font-size: 3rem;
   margin: 1rem 0;
 }
 
 body {
-  background: #f2f2f2;
-}
-
-.hidden {
-  opacity: 0;
+  background: $offwhite;
 }

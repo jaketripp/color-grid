@@ -17,8 +17,8 @@ class App extends Component {
       topRight: "#F1C40F",
       bottomLeft: "#079992",
       bottomRight: "#E9A69F",
-      verticalSteps: 6,
-      horizontalSteps: 10,
+      verticalSteps: 9,
+      horizontalSteps: 16,
       whichCorner: "",
       displayColorPicker: false,
       colorPickerColor: ""
@@ -140,7 +140,7 @@ class App extends Component {
                 <label>Rows:</label>
                 <InputRange
                   minValue={2}
-                  maxValue={10}
+                  maxValue={16}
                   value={this.state.verticalSteps}
                   onChange={value => this.setState({ verticalSteps: value })}
                 />
@@ -150,7 +150,7 @@ class App extends Component {
                 <label>Columns:</label>
                 <InputRange
                   minValue={2}
-                  maxValue={10}
+                  maxValue={16}
                   value={this.state.horizontalSteps}
                   onChange={value => this.setState({ horizontalSteps: value })}
                 />

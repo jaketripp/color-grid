@@ -8,8 +8,8 @@ export default function Row(props) {
   };
   return (
     <div className="row" style={style}>
-      {row.map((color, j) => {
-        return <Block color={color} key={j}/>;
+      {row.map((color, i) => {
+        return <Block color={color} key={i}/>;
       })}
     </div>
   );

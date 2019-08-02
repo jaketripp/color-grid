@@ -5,6 +5,7 @@
   margin: 0 auto;
   flex-wrap: wrap-reverse;
 }
+
 .form {
   display: flex;
   align-items: center;
@@ -24,5 +25,5 @@
 }
 
 label {
-  color: #545454;
+  color: $gray;
 }

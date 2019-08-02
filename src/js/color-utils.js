@@ -33,7 +33,8 @@ function createColorArr(lightest, darkest, numberOfSteps) {
 // i.e. [255, 255, 255]
 // returns '255, 255, 255' 
 function toRGBString(x) {
-  return x.map(Math.round).join(", ");
+  const rgb = x.map(Math.round).join(", ");
+  return `rgb(${rgb})`;
 }
 
 // takes in rgb in array form

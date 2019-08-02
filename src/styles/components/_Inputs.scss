@@ -1,7 +1,7 @@
 // taken and modified from og node_modules
 .input-range__slider {
-  background: #2196f3;
-  border: 1px solid #2196f3;
+  background: $blue;
+  border: 1px solid $blue;
   border-radius: 100%;
   cursor: pointer;
   display: block;
@@ -123,7 +123,7 @@
 
 .color-picker-button {
   padding: 5px;
-  background: #fff;
+  background: white;
   border-radius: 1px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   display: inline-block;
