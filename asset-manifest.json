@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/color-grid/static/css/main.84e99af2.chunk.css",
+    "main.js": "/color-grid/static/js/main.f12b04d5.chunk.js",
+    "main.js.map": "/color-grid/static/js/main.f12b04d5.chunk.js.map",
+    "runtime~main.js": "/color-grid/static/js/runtime~main.b4e9e7f9.js",
+    "runtime~main.js.map": "/color-grid/static/js/runtime~main.b4e9e7f9.js.map",
+    "static/js/2.1c5b36f4.chunk.js": "/color-grid/static/js/2.1c5b36f4.chunk.js",
+    "static/js/2.1c5b36f4.chunk.js.map": "/color-grid/static/js/2.1c5b36f4.chunk.js.map",
+    "index.html": "/color-grid/index.html",
+    "precache-manifest.e723c3f4badda52b98a551515da3d7d1.js": "/color-grid/precache-manifest.e723c3f4badda52b98a551515da3d7d1.js",
+    "service-worker.js": "/color-grid/service-worker.js",
+    "static/css/main.84e99af2.chunk.css.map": "/color-grid/static/css/main.84e99af2.chunk.css.map",
+    "static/media/main.scss": "/color-grid/static/media/ProximaNova-Thin.8f0bc01c.otf"
+  }
+}
