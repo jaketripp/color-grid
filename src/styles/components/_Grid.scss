@@ -19,7 +19,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  .rgb, .hex {
+  .rgb,
+  .hex {
     padding: 8px;
   }
   .hover {
@@ -43,10 +44,49 @@
   }
 }
 
-.block:first-child:hover .hover {
-  left: 0;
+// when lots of columns
+// block hovers near the left and right edges get cut off
+.block {
+  &:nth-child(1) {
+    &:hover .hover {
+      left: 0;
+    }
+  }
+  &:nth-child(2) {
+    &:hover .hover {
+      left: -8px;
+    }
+  }
+  &:nth-child(3) {
+    &:hover .hover {
+      left: -16px;
+    }
+  }
+  &:nth-child(4) {
+    &:hover .hover {
+      left: -24px;
+    }
+  }
 }
-
-.block:last-child:hover .hover {
-  right: 0;
+.block {
+  &:nth-last-child(1) {
+    &:hover .hover {
+      right: 0;
+    }
+  }
+  &:nth-last-child(2) {
+    &:hover .hover {
+      right: -8px;
+    }
+  }
+  &:nth-last-child(3) {
+    &:hover .hover {
+      right: -16px;
+    }
+  }
+  &:nth-last-child(4) {
+    &:hover .hover {
+      right: -24px;
+    }
+  }
 }
